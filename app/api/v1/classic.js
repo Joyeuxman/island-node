@@ -1,26 +1,28 @@
 const Router = require('koa-router')
 const {Flow} = require('@models/flow')
 const {Art} = require('@models/art')
+const {Favor} = require('@models/favor')
+const {Auth} = require('@middlewares/auth')
 
 const router = new Router({
   prefix: '/v1/classic'
 })
 
 //获取最新期刊
-router.get('/latest',async(ctx,next)=>{
+router.get('/latest',new Auth().m,async(ctx,next)=>{
+  console.log('auth',ctx.auth)
   const flow = await Flow.findOne({
     order:[
       ['index','DESC']
     ]
   })
-  console.log('flow===',flow.art_id, flow.type)
 
   const art = await Art.getData(flow.art_id, flow.type)
-  console.log('art===',art)
 
-  // const likeLatest = await Favor.userLikeIt(flow.art_id, flow.type,ctx.auth.uid)
+  const likeLatest = await Favor.userLikeIt(flow.art_id, flow.type,ctx.auth.uid)
   art.setDataValue('index',flow.index)
-  art.setDataValue('test','有问题')
+  art.setDataValue('like_status',likeLatest)
+  console.log('art===',art)
 
   ctx.body = art.dataValues
 

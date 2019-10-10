@@ -5,7 +5,7 @@ const {
 	MUSIC_TYPE,
 	SENTENCE_TYPE,
 	BOOK_TYPE
-} = require('@root/utils/enum').artType
+} = require('@root/utils/enums').ArtType
 
 class Art {
 	constructor() {}

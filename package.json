@@ -40,7 +40,11 @@
   "_moduleAliases": {
     "@root": ".",
     "@models": "app/models",
+    "@services": "app/services",
     "@core": "core",
-    "@validator": "app/validators/validator.js"
+    "@utils": "utils",
+    "@middlewares": "middlewares",
+    "@config": "config/config",
+    "@validators": "utils/validator.js"
   }
 }

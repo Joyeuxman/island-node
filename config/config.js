@@ -18,10 +18,10 @@
     secretKey: '1234qwer!@#$',
     expiresIn: 60 * 60 * 24 * 30 // 过期时间：一个月
    },
-   wx:{
-     appId: '',
-     appSecret: '',
-     loginUrl: ''
+   wx:{ // 小程序信息
+     appId: 'wx4ffd105ef0e8075b',
+     appSecret: 'a46ddcdbcb10d946093ee872407a52a7',
+     loginUrl: 'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code'
    },
    yushu:{
     detailUrl:'http://t.yushu.im/v2/book/id/%s',

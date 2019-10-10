@@ -5,11 +5,11 @@
 
 | 接口名称 | 接口地址 | 请求方式 | 入参 |
 |:------|:------|:------|:------|
-| 获取Token | http://localhost:3000/v1/token | POST | |
-| 验证Token | | | |
+| 获取Token | http://localhost:3000/v1/token | POST | account、type |
+| 验证Token | http://localhost:7000/v1/token/verify | POST | token |
 |获取最新期刊| http://localhost:3000/v1/classic/latest | GET | no |
 |获取下一期| http://localhost:3000/v1/classic/6/next | GET | no |
-|获取上一期| http://localhost:3000/v1/classic/6/previous | GET | |
+|获取上一期| http://localhost:3000/v1/classic/6/previous | GET | no |
 |获取期刊点赞情况| | | |
 |获取我喜欢的期刊| | | |
 |获取期刊详情| | | |

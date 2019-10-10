@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
     dialect:'mysql',//要连接的数据库类型。可选值有：mysql、postgres、sqlite、mariadb、mssql
     host,// 连接数据库的主机
     port,// 连接数据库的端口
-    logging: true,//是否开启日志打印 需要测试???
+    logging: false,//是否开启日志打印
     timezone: '+08:00',//北京时间  时间转换时从数据库得到的JavaScript时间。这个时区将应用于连接服务器的 NOW、CURRENT_TIMESTAMP或其它日期函数
     define:{ //模型定义
       timestamps: true,// 为模型添加 createdAt 和 updatedAt 两个时间戳字段

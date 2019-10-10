@@ -34,7 +34,7 @@ class InitManager{
 
   // 将错误信息加载到全局对象global上
   static loadHttpException(){
-    global.errors = require('@core/http-exception')
+    global.errs = require('@core/http-exception')
   }
 }
 

@@ -24,8 +24,8 @@ class Success extends HttpException{
 }
 
 class ParameterException extends HttpException{
-  constructor(){
-    super(msg,errorCode)
+  constructor(msg,errorCode){
+    super()
     this.msg = msg || '参数错误'
     this.code = 400
     this.errorCode = errorCode || 10000
@@ -33,8 +33,8 @@ class ParameterException extends HttpException{
 }
 
 class AuthFailed extends HttpException{
-  constructor(){
-    super(msg,errorCode)
+  constructor(msg,errorCode){
+    super()
     this.msg = msg || '授权失败'
     this.code = 401
     this.errorCode = errorCode || 10004
@@ -42,8 +42,8 @@ class AuthFailed extends HttpException{
 }
 
 class Forbbiden extends HttpException{
-  constructor(){
-    super(msg,errorCode)
+  constructor(msg,errorCode){
+    super()
     this.msg = msg || '禁止访问'
     this.code = 403
     this.errorCode = errorCode || 10006
@@ -51,8 +51,8 @@ class Forbbiden extends HttpException{
 }
 
 class NotFound extends HttpException{
-  constructor(){
-    super(msg,errorCode)
+  constructor(msg,errorCode){
+    super()
     this.msg = msg || '资源未找到'
     this.code = 404
     this.errorCode = errorCode || 10000
