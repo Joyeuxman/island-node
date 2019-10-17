@@ -53,6 +53,13 @@ class ClassicValidator extends PositiveIntegerValidator{
   }
 }
 
+class LikeValidator extends PositiveIntegerValidator{
+  constructor(){
+    super()
+    this.validateType = checkArtType
+  }
+}
+
 /**
  * 校验type必填且为ArtType
  * @param {Object} vals ctx请求上下文
@@ -71,5 +78,6 @@ module.exports = {
   PositiveIntegerValidator,
   TokenValidator,
   NotEmptyValidator,
-  ClassicValidator
+  ClassicValidator,
+  LikeValidator
 }

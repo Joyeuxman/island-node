@@ -59,11 +59,31 @@ class NotFound extends HttpException{
   }
 }
 
+class LikeError extends HttpException{
+  constructor(msg,errorCode){
+    super()
+    this.msg = msg || '你已经点过赞'
+    this.code = 400
+    this.errorCode = errorCode || 60001
+  }
+}
+
+class DisLikeError extends HttpException{
+  constructor(msg,errorCode){
+    super()
+    this.msg = msg || '你已取消点赞'
+    this.code = 400
+    this.errorCode = errorCode || 60002
+  }
+}
+
 module.exports = {
   HttpException,
   Success,
   ParameterException,
   AuthFailed,
   Forbbiden,
-  NotFound
+  NotFound,
+  LikeError,
+  DisLikeError
 }
