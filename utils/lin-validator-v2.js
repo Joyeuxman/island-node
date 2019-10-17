@@ -26,6 +26,10 @@ class LinValidator {
     }
 
 
+    /**
+     * 聚合请求中所有的参数
+     * @param {Object} ctx 请求上下文
+     */
     _assembleAllParams(ctx) {
         return {
             body: ctx.request.body,
@@ -49,6 +53,10 @@ class LinValidator {
         }
     }
 
+    /**
+     * 
+     * @param {*} key 
+     */
     _findMembersFilter(key) {
         if (/validate([A-Z])\w+/g.test(key)) {
             return true

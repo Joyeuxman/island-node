@@ -1,5 +1,5 @@
 const { LinValidator, Rule } = require('@utils/lin-validator-v2')
-const { LoginType } = require('@utils/enums')
+const { LoginType,ArtType } = require('@utils/enums')
 
 /**
  * 正整数校验器
@@ -45,8 +45,31 @@ class NotEmptyValidator extends LinValidator{
   }
 }
 
+
+class ClassicValidator extends PositiveIntegerValidator{
+  constructor(){
+    super()
+    this.validateType = checkArtType
+  }
+}
+
+/**
+ * 校验type必填且为ArtType
+ * @param {Object} vals ctx请求上下文
+ */
+function checkArtType(vals){
+  let type = vals.body.type || vals.path.type
+  if(!type){
+    throw new Error('type是必须参数')
+  }
+  if(!ArtType.isThisType(+type)){
+    throw new Error('type参数不合法')
+  }
+}
+
 module.exports = {
   PositiveIntegerValidator,
   TokenValidator,
-  NotEmptyValidator
+  NotEmptyValidator,
+  ClassicValidator
 }

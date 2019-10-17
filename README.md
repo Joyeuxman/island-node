@@ -28,6 +28,10 @@
 #### Mysql执行`movie.sql`、`music.sql`、 `sentence.sql`时无法插入数据
 * 报错信息 `ERROR 1292 (22007): Incorrect datetime value: '0000-00-00 00:00:00'`
 * [解决方法](https://blog.csdn.net/zhengwei125/article/details/79003563/)
+#### 如何将sequelize查询的结果的值返回给前端
+```
+ctx.body = art.dataValues
+```
 
 
 
@@ -35,6 +39,35 @@
 ### 资源列表
 * [sequlize中文文档](https://itbilu.com/nodejs/npm/VkYIaRPz-.html#)
 
+### 安全机制
+* 前端wx.login获取code,将code传递给后端
+* 后端根据appId、appSecret、code向微信后端获取session
+* 后端从session中取出openid,用来查找用户|生成用户(添加用户级别)
+* 后端从用户信息中获取用户ID、用户级别
+* 后端使用jwt对用户ID、用户级别加密生成token，返给前端
+* 前端请求数据使用Basic-Auth加密token作为请求头，传递给后端
+* 后端依次使用Basic-Auth、jwt解密token,校验请求是否合法，如合法则获取用户ID、用户级别
+
+
+### basic-auth验证
+* 前端实现（请求头中添加`Authorization:Basic base64(account:password)`）
+  ```
+  import {Base64} from 'js-base64'
+  const token = wx.getStorageSync('token')// token 为后端返回的令牌
+  const base64 = Base64.encode(token + ':')
+  return 'Basic ' + base64
+  ```
+* 后端实现
+```
+const basicAuth = require('basic-auth')
+const userToken = basicAuth(ctx.req) // userToken {name: token,pass:''}
+```
+
+### JWT安全验证（jsonwebtoken）
+* 加密
+* 语法 `jwt.sign(payload, secretOrPrivateKey, [options, callback])`
+* 解密
+* 语法 `jwt.verify(token, secretOrPublicKey, [options, callback])`
 
 ### 模块别名(module-alias)
 * 模块别名可以解决使用相对路径引用模块时，造成的路径错误

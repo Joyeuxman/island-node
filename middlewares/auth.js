@@ -12,7 +12,10 @@ class Auth {
 	}
 
 	/**
-	 *
+	 * 权限中间件实现机制
+	 * 前后端使用basic-auth安全机制
+	 * 1. 用basic-auth来验证token令牌是否存在
+	 * 2. token存在的话，使用jwt验证token是否正确
 	 */
 	get m() {
 		return async (ctx, next) => {

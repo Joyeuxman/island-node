@@ -1,5 +1,7 @@
-const {Sequelize,Model} = require('sequelize')
+const {Sequelize,Model,Op} = require('sequelize')
 const {sequelize} = require('@core/db')
+const {NotFound} = require('@core/http-exception')
+const {Art} = require('@models/art')
 
 class Favor extends Model {
   /**
@@ -15,6 +17,28 @@ class Favor extends Model {
       }
     })
     return favor ? true:false
+  }
+
+  /**
+   * 获取用户喜欢的期刊
+   * 1.查询该用户所有喜欢期刊（不包括书籍类型）的集合
+   * 2. 按照类型将集合中art_id进行分类
+   * 3. 根据art_id集合和type进行查询
+   * @param {String} uid 用户ID
+   */
+  static async getMyClassicFavors(uid){
+    const favors = await Favor.findAll({
+      where:{
+        uid,
+        type: {
+          [Op.not]: 400
+        }
+      }
+    })
+    if(!favors){
+      throw new NotFound()
+    }
+    return await Art.getList(favors)
   }
 }
 
