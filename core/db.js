@@ -10,6 +10,7 @@ const sequelize = new Sequelize(
   user,
   password,
   {
+    // query: { raw:true },// 设置为 true，即可返回源数据
     dialect:'mysql',//要连接的数据库类型。可选值有：mysql、postgres、sqlite、mariadb、mssql
     host,// 连接数据库的主机
     port,// 连接数据库的端口

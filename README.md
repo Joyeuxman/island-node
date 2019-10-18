@@ -10,8 +10,8 @@
 |获取最新期刊| http://localhost:3000/v1/classic/latest | GET | no |
 |获取下一期| http://localhost:3000/v1/classic/6/next | GET | no |
 |获取上一期| http://localhost:3000/v1/classic/6/previous | GET | no |
-|获取期刊点赞情况| | | |
-|获取我喜欢的期刊| | | |
+|获取期刊点赞情况| http://localhost:7000/v1/classic/:type/:art_id/favor | GET | no|
+|获取我喜欢的期刊| http://localhost:7000/v1/classic/favor | GET | no |
 |获取期刊详情| | | |
 |点赞| | | |
 |取消点赞| | | |
