@@ -2,26 +2,27 @@
 
 
 ### 接口列表(共17个)
+请求前缀：`http://localhost:7000`
 
-| 接口名称 | 接口地址 | 请求方式 | 入参 |
+| 接口名称 | 接口地址 | 请求方式 | body请求体中参数 |
 |:------|:------|:------|:------|
-| 获取Token | http://localhost:3000/v1/token | POST | account、type |
-| 验证Token | http://localhost:7000/v1/token/verify | POST | token |
-|获取最新期刊| http://localhost:3000/v1/classic/latest | GET | no |
-|获取下一期| http://localhost:3000/v1/classic/6/next | GET | no |
-|获取上一期| http://localhost:3000/v1/classic/6/previous | GET | no |
-|获取期刊点赞情况| http://localhost:7000/v1/classic/:type/:art_id/favor | GET | no|
-|获取我喜欢的期刊| http://localhost:7000/v1/classic/favor | GET | no |
-|获取期刊详情| | | |
-|点赞| | | |
-|取消点赞| | | |
-|获取热门书籍列表| | | |
-|获取书籍详情| | | |
-|搜索书籍| | | |
-|获取我喜欢书籍的数量| | | |
-|获取书籍点赞情况| | | |
-|新增短评| | | |
-|获取书籍短评| | | |
+| 获取Token | /v1/token | POST | account、type |
+| 验证Token | /v1/token/verify | POST | token |
+|获取最新期刊| /v1/classic/latest | GET | no |
+|获取下一期| /v1/classic/:index/next | GET | no |
+|获取上一期| /v1/classic/:index/previous | GET | no |
+|获取期刊点赞情况| v1/classic/:type/:art_id/favor | GET | no|
+|获取我喜欢的期刊| /v1/classic/favor | GET | no |
+|获取期刊详情| v1/classic/:type/:id | GET | no |
+|点赞| /v1/like | POST | art_id、type |
+|取消点赞| /v1/like/cancel | POST | art_id、type |
+|获取热门书籍列表| /v1/book/hot_list | GET| no |
+|获取书籍详情| /v1/book/:book_id/detail | GET | no |
+|搜索书籍| /v1/book/search | POST | q、start、count |
+|获取我喜欢书籍的数量| /v1/book/favor/count | GET | no |
+|获取书籍点赞情况| v1/book/:book_id/favor | GET | no |
+|新增短评| /v1/book/add/short_comment | POST | book_id、content |
+|获取书籍短评| /v1/book/:book_id/short_comment | GET | no |
 
 
 ### 可能出现的问题

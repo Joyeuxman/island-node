@@ -84,9 +84,6 @@ router.get('/hot_keyword', async ctx => {
           '王小波'
       ]
   }
-  // 搜索次数最多
-  // 一部分参考算法，人工编辑
-  // Lin-CMS，编辑热门关键字的功能
 })
 
 
