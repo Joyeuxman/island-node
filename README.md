@@ -1,5 +1,5 @@
 ## 小程序-岛-后端
-> Node+
+> Node + Koa + MySql + Sequelize + Basic Auth + JWT 
 
 ### 资源
 * [项目地址](https://github.com/TaleLin) 
