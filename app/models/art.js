@@ -1,4 +1,5 @@
 const { Op } = require('sequelize')
+const {flatten} = require('lodash')
 const {Movie,Sentence,Music} = require('@models/classic')
 const {
 	MOVIE_TYPE,
@@ -90,9 +91,10 @@ class Art {
 			if(ids.length === 0){
 				continue
 			}
-			arts.push(await Art._getListByType(ids,key))
+			arts.push(await Art._getListByType(ids,+key))
 		}
-		return arts
+		console.log('arts===',arts)
+		return flatten(arts)
 	}
 
 	/**
@@ -108,7 +110,8 @@ class Art {
 				id: {
 					[Op.in]: ids
 				}
-			}
+			},
+			raw: true, // 设置为 true，即可返回源数据
 		}
 		const scope = 'bh'
 		switch (type) {

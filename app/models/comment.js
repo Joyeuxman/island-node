@@ -16,7 +16,7 @@ class Comment extends Model{
         nums: 1
       })
     }else{
-      return await Comment.increment('nums',{
+      return await comment.increment('nums',{
         by: 1
       })
     }

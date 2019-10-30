@@ -1,4 +1,11 @@
-## Node-learn
+## 小程序-岛-后端
+> Node+
+
+### 资源
+* [项目地址](https://github.com/TaleLin) 
+* [ES规范](https://github/tc39 )
+* [sequlize中文文档](https://itbilu.com/nodejs/npm/VkYIaRPz-.html#)
+* 推荐书籍：代码大全2
 
 
 ### 接口列表(共17个)
@@ -33,12 +40,8 @@
 ```
 ctx.body = art.dataValues
 ```
-
-
-
-
-### 资源列表
-* [sequlize中文文档](https://itbilu.com/nodejs/npm/VkYIaRPz-.html#)
+#### 静态资源托管的图片无法打开
+* 地址为：`http://localhost:7000/images/movie.4.png`
 
 ### 安全机制
 * 前端wx.login获取code,将code传递给后端
@@ -75,6 +78,25 @@ const userToken = basicAuth(ctx.req) // userToken {name: token,pass:''}
 * 使用统一的路径来引用模块
 * [使用方法](https://www.npmjs.com/package/module-alias)
 
+
+### 注意事项
+* 新建数据库时字符集为`utf8mbp4`,默认排序规则为`utf8mbp4_grneral_ci`
+* 使用`sequelize`连接`mysql`需要安装驱动器(npm包)`mysql2`
+* koa使用中间件时注意
+```
+    router.post('/test',new Class())
+    // 无论有多少次 test请求，都只会实例化一次 new Class()，导致变量污染
+```
+* 小程序对cnpm的支持不是很好，不建议使用
+* base64.js 对token加密
+* Authorization:Basic base64(account:password)
+* 对数据库进行增删改查时，如果有多个操作，为了保证这些操作，要不同时成功，要不同时失败，需要使用数据库事务来保证 
+* 关系型数据库的特点：ACID 原子性 一致性 隔离性 持久性
+* sequlize库中scope使用有bug,使用全局scope之后，不能对相应实例进行增删改查
+* 通过url传递参数的时候，数据类型都是字符串，使用body+json方式可以传递数字格式的数据
+* python 爬虫工具(开发必备，核心是正则表达式)  requests，BF4，Scrapy
+
+
 ### HTTP常见的状态码
 
 #### 2XX 成功
@@ -98,3 +120,6 @@ const userToken = basicAuth(ctx.req) // userToken {name: token,pass:''}
 #### 5XX 服务器错误
 * 500 internal sever error，表示服务器端在执行请求时发生了错误
 * 503 service unavailable，表明服务器暂时处于超负载或正在停机维护，无法处理请求
+
+### 课程进度
+* 12-2
